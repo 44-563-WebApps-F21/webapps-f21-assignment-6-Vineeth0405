@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+ <head>
+     <title>Pass Page</title>
+ </head>
+<body>
+
+<h2>Pass Phrase by Vineeth Reddy Naredla</h2>
+
+<form>
+    <label for="secrect_phrase">Enter the secret phrase</label>
+    <input type ="password" id="secret_phrase" name="secrect_phrase" min=10 max=50 step=2 value="Let me in"> <br>
+
+    <label for="check_phrase">Enter a phrase</label>
+    <input type ="text" id="check_phrase" name="check_phrase" autofocus> <br>
+
+    <input type="button" onclick="processPhrase()" value="Check the phrase">
+</form>
+
+
+<p id="result">This text will be replaced </p>
+
+<div class="container">
+    <img src="images/goat.jpg" id="goat" alt="Goat" width="200px" height="200px" onclick="newImage()">
+</div>
+
+<script> 
+let correct = 0;
+let wrong = 0;
+function processPhrase (){
+    console.log("Getting form values")
+    s = document.getElementById("secret_phrase").value
+    console.log(s);
+    p = document.getElementById("check_phrase").value
+    console.log(p);
+    out = document.getElementById("result")
+    console.log(out);
+    if(s == p){
+        alert("Access allowed");
+        correct++
+        out.innerHTML = "Correct: " + correct + " Wrong: " + wrong;
+    }else {
+        alert("Access denied");
+        wrong++
+        out.innerHTML = "Correct: " + correct + " Wrong: " + wrong;
+    }
+}
+let usingImage = 1;
+function newImage(){
+    img = document.getElementById("goat")
+    switch (usingImage) {
+        case 1:
+            img.src = "images/hound.jpg"
+            usingImage = 2
+            break;
+        case 2:
+            img.src = "images/raggle.jpg"
+            usingImage = 3
+            break;
+        case 3:
+            img.src = "images/goat.jpg"  
+            usingImage = 1
+            break;  
+        default:
+            break;
+    }
+}
+</script>
+
+</body>
+</html> 
